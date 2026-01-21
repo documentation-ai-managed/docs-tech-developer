@@ -1,0 +1,29 @@
+---
+title: Flutter build fails
+description: How to fix common Flutter build failures.
+---
+
+## Symptoms
+
+- Build process stops
+- Error messages about missing tools
+
+## Causes
+
+- Outdated dependencies
+- Missing Android/iOS toolchain
+
+## Solution
+
+<Steps>
+  <Step title="Run Flutter Doctor">
+    ````bash
+    flutter doctor
+    ````
+  </Step>
+  <Step title="Update dependencies">
+    ````bash
+    flutter pub upgrade
+    ````
+  </Step>
+</Steps>

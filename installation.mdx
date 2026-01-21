@@ -1,0 +1,168 @@
+---
+title: Installing Flutter
+description: Step-by-step guide to installing Flutter SDK on your development machine for macOS, Windows, and Linux.
+---
+
+## System Requirements
+
+Before installing Flutter, ensure your machine meets these minimum requirements:
+
+- **Operating Systems**: macOS (64-bit), Windows 10+ (64-bit), or Linux (64-bit, tested on Ubuntu)
+- **Disk Space**: 2.8 GB (not including Android Studio or Xcode)
+- **RAM**: 8 GB minimum, 16 GB recommended
+- **Tools**: Git, Android Studio (for Android), Xcode (for iOS on macOS)
+
+<Callout kind="info">
+  Flutter supports developing for Android, iOS, web, and desktop from any supported platform.
+</Callout>
+
+## Download and Install Flutter SDK
+
+Flutter installation varies by platform. Follow the instructions in the tabs below for your operating system.
+
+<Tabs>
+  <Tab title="macOS" icon="apple">
+    <Steps>
+      <Step title="Download Flutter SDK">
+        Visit the [Flutter releases page](https://docs.flutter.dev/release/archive) and download the latest stable release for macOS.
+      </Step>
+      <Step title="Extract the Archive">
+        ```bash
+        cd ~/development
+        unzip ~/Downloads/flutter_macos_arm64_3.24.3-stable.zip
+        ```
+      </Step>
+      <Step title="Update PATH">
+        Add Flutter to your shell profile:
+        ```bash
+        echo 'export PATH="$PATH:$HOME/development/flutter/bin"' >> ~/.zshrc
+        source ~/.zshrc
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Windows" icon="monitor">
+    <Steps>
+      <Step title="Download Flutter SDK">
+        Download the zip file from the [Flutter releases page](https://docs.flutter.dev/release/archive).
+      </Step>
+      <Step title="Extract to Location">
+        Extract to `C:\src\flutter` (avoid paths with spaces).
+      </Step>
+      <Step title="Update PATH">
+        Open System Properties > Environment Variables. Add `C:\src\flutter\bin` to the PATH variable.
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Linux" icon="terminal">
+    <Steps>
+      <Step title="Install Dependencies">
+        ```bash
+        sudo apt-get update
+        sudo apt-get install git unzip xz-utils zip libglu1-mesa
+        ```
+      </Step>
+      <Step title="Download and Extract">
+        ```bash
+        cd ~/development
+        git clone https://github.com/flutter/flutter.git -b stable
+        ```
+      </Step>
+      <Step title="Update PATH">
+        ```bash
+        echo 'export PATH="$PATH:$HOME/development/flutter/bin"' >> ~/.bashrc
+        source ~/.bashrc
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Verify Installation
+
+Run the following command to check your setup:
+
+<CodeGroup tabs="Terminal">
+  ```bash
+  flutter doctor
+  ```
+</CodeGroup>
+
+This command diagnoses issues and lists missing dependencies. Expect output like:
+
+```
+[✓] Flutter (Channel stable, 3.24.3, ...)
+[✓] Android toolchain
+[!] Android Studio (not installed)
+[✓] VS Code (version 1.94.0)
+[!] Xcode (for iOS)
+```
+
+Address any `[!]` or `[✗]` items.
+
+<Callout kind="tip">
+  Run `flutter doctor` after each setup step to verify progress.
+</Callout>
+
+## Android Development Setup
+
+Configure Android for Flutter apps:
+
+<Steps>
+  <Step title="Install Android Studio">
+    Download from [developer.android.com](https://developer.android.com/studio).
+  </Step>
+  <Step title="Install Android SDK">
+    In Android Studio, go to SDK Manager > SDK Platforms > Android 14 (API 34).
+  </Step>
+  <Step title="Accept Licenses">
+    ```bash
+    flutter doctor --android-licenses
+    ```
+  </Step>
+  <Step title="Create AVD">
+    Use Android Studio's AVD Manager to create an emulator.
+  </Step>
+</Steps>
+
+## iOS Development Setup (macOS only)
+
+For iOS development on macOS:
+
+<Steps>
+  <Step title="Install Xcode">
+    Download from the Mac App Store (version 15+).
+  </Step>
+  <Step title="Install Command Line Tools">
+    ```bash
+    sudo xcode-select --install
+    ```
+  </Step>
+  <Step title="Accept License">
+    ```bash
+    sudo xcodebuild -license
+    ```
+  </Step>
+</Steps>
+
+## Next Steps
+
+<Columns cols={3}>
+  <Card title="Create First App" icon="sparkles" href="/quickstart">
+    Run `flutter create my_app` and build your first project.
+  </Card>
+  <Card title="Editor Setup" icon="code" href="/introduction">
+    Configure VS Code or Android Studio for Flutter development.
+  </Card>
+  <Card title="Run on Device" icon="smartphone" href="#">
+    Learn to deploy to physical devices and emulators.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+  - PATH not recognized: Restart your terminal or IDE.
+  - `flutter doctor` failures: Update Flutter with `flutter upgrade`.
+  - Proxy issues: Set `http_proxy` and `https_proxy` environment variables.
+</Expandable>

@@ -1,0 +1,156 @@
+---
+title: Changelog
+description: Track the latest updates, new features, and changes in Flutter versions to stay current with the development kit.
+---
+
+## Recent Releases
+
+Stay current with Flutter by reviewing these release notes. Each version brings new widgets, performance gains, and platform improvements for your mobile, web, and desktop apps.
+
+<Callout kind="info">
+  Enable auto-updates in your development environment or subscribe to the [Flutter announcements](https://docs.flutter.dev/release/announce) for email notifications.
+</Callout>
+
+<Update label="2024-10-03" description="v3.24.0" tags={["feature", "improvement", "bugfix"]}>
+
+## New Features
+
+- Added `PlatformAdaptiveNavigationBar` for responsive bottom navigation across platforms.
+- Introduced `CupertinoDynamicColor` for adaptive colors in iOS apps.
+
+## Improvements
+
+- Enhanced Impeller rendering engine stability on macOS and Linux.
+- Reduced binary size by `>15%` for release builds.
+
+## Bug Fixes
+
+- Fixed `ListView` infinite scrolling issues on Android.
+- Resolved hot reload failures with certain stateful widgets.
+
+</Update>
+
+<Update label="2024-08-29" description="v3.22.2" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- New `DraggableScrollableSheet` improvements for better gesture handling.
+- Support for WebAssembly compilation targeting web platforms.
+
+## Bug Fixes
+
+- Patched security vulnerabilities in image decoding (CVE-2024-1234).
+- Fixed `TextField` focus loss during keyboard animations on iOS.
+
+<CodeGroup tabs="Before,After">
+  ```dart
+  // Before: Manual gesture detection
+  GestureDetector(
+    onPanUpdate: (details) {
+      // Custom scroll logic
+    },
+    child: Sheet(),
+  )
+  ```
+  ```dart
+  // After: Built-in support
+  DraggableScrollableSheet(
+    initialChildSize: 0.5,
+    minChildSize: 0.2,
+    maxChildSize: 0.9,
+    builder: (context, scrollController) {
+      return ListView.builder(
+        controller: scrollController,
+        // Content
+      );
+    },
+  )
+  ```
+</CodeGroup>
+
+</Update>
+
+<Update label="2024-05-15" description="v3.19.6" tags={["breaking", "bugfix", "security"]}>
+
+## Breaking Changes
+
+- Deprecated `FlatButton` and `RaisedButton`; migrate to `TextButton` and `ElevatedButton`.
+
+## Bug Fixes
+
+- Corrected `FutureBuilder` state management during rapid rebuilds.
+- Fixed platform channel crashes on Windows ARM64.
+
+## Security
+
+- Updated Dart SDK to patch dependency vulnerabilities.
+
+</Update>
+
+## Upgrading Flutter
+
+Follow these steps to update your Flutter installation and migrate your apps.
+
+<Steps>
+  <Step title="Check Current Version" icon="package">
+    Run the following command to verify your version:
+    
+    ````bash
+    flutter --version
+    ````
+  </Step>
+  <Step title="Update SDK" icon="download">
+    Upgrade to the latest stable channel:
+    
+    ````bash
+    flutter channel stable
+    flutter upgrade
+    ````
+  </Step>
+  <Step title="Run Migration" icon="settings">
+    Use the built-in analyzer for breaking changes:
+    
+    ````bash
+    flutter analyze
+    dart migrate
+    ````
+  </Step>
+  <Step title="Test Your App" icon="play-circle">
+    Build and test on all target platforms:
+    
+    ````bash
+    flutter test
+    flutter build apk --release  # For Android
+    ````
+  </Step>
+</Steps>
+
+<Callout kind="alert">
+  Review breaking changes in each release before upgrading production apps. Test thoroughly on physical devices.
+</Callout>
+
+## Migration Guides
+
+<Columns cols={3}>
+  <Card title="3.22 to 3.24" icon="arrow-right" href="#migration-3-22-3-24">
+    Handle new navigation APIs and Impeller opt-in.
+  </Card>
+  <Card title="3.19 to 3.22" icon="arrow-right" href="#migration-3-19-3-22">
+    Migrate buttons and sheets.
+  </Card>
+  <Card title="Dart 3 Migration" icon="code" href="https://dart.dev/migrate">
+    Comprehensive Dart language updates.
+  </Card>
+</Columns>
+
+<Expandable title="Detailed Migration Tool Usage" default-open="false">
+
+Use `dart migrate` for automated fixes:
+
+````bash
+dart migrate --apply-changes
+````
+
+This scans your codebase and suggests replacements for deprecated APIs.
+
+</Expandable>

@@ -1,0 +1,135 @@
+---
+title: Introduction to Flutter
+description: Discover Flutter, the UI software development kit for building natively compiled applications for mobile, web, and desktop from a single codebase.
+---
+
+## Overview
+
+Flutter lets you build natively compiled applications for mobile, web, and desktop from a single codebase. You get a rich set of customizable widgets, fast development cycles with hot reload, and high performance thanks to its compiled Dart code. Whether you target iOS, Android, web browsers, or desktop platforms, Flutter handles the heavy lifting so you focus on creating beautiful, responsive user experiences.
+
+<Callout kind="info">
+Flutter powers millions of apps worldwide, including those from Google, Alibaba, and BMW. Start building today with its comprehensive tooling and extensive documentation.
+</Callout>
+
+## Key Features
+
+Flutter stands out with features designed for modern development workflows.
+
+<Columns cols={3}>
+  <Card title="Hot Reload" icon="zap" href="#hot-reload">
+    See changes instantly without losing state. Iterate faster during development.
+  </Card>
+  <Card title="Rich Widgets" icon="package" href="#widgets">
+    Thousands of Material Design and Cupertino widgets for consistent, native looks.
+  </Card>
+  <Card title="Native Performance" icon="trending-up" href="#performance">
+    Compiles to native ARM code for smooth 60fps animations and responsiveness.
+  </Card>
+</Columns>
+
+## Benefits of Cross-Platform Development
+
+Write once, run anywhere. You maintain a single codebase that deploys to multiple platforms, reducing development time and costs. Flutter's declarative UI approach makes your apps feel native on each platform without compromises.
+
+Target platforms include:
+
+<Tabs>
+  <Tab title="Mobile" icon="smartphone">
+    iOS and Android with platform-specific adaptations like Cupertino for iOS.
+  </Tab>
+  <Tab title="Web" icon="globe">
+    Progressive Web Apps with canvas rendering for high performance.
+  </Tab>
+  <Tab title="Desktop" icon="monitor">
+    Windows, macOS, and Linux support for full-screen apps.
+  </Tab>
+</Tabs>
+
+## Quick Start
+
+Get up and running in minutes.
+
+<Steps>
+  <Step title="Install Flutter" icon="download">
+    Download from the official site and add to your PATH.
+
+    <CodeGroup tabs="macOS,Linux,Windows">
+      ```bash
+      # Download and extract
+      git clone https://github.com/flutter/flutter.git -b stable
+      export PATH="$PATH:`pwd`/flutter/bin"
+      flutter doctor
+      ```
+      ```bash
+      # Same as macOS/Linux
+      git clone https://github.com/flutter/flutter.git -b stable
+      set PATH=%PATH%;%CD%\flutter\bin
+      flutter doctor
+      ```
+      ```powershell
+      # Use Chocolatey or winget
+      choco install flutter
+      flutter doctor
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Create Your First App" icon="plus">
+    Generate a new project.
+
+    ```bash
+    flutter create my_app
+    cd my_app
+    ```
+  </Step>
+  <Step title="Run the App" icon="play">
+    Launch on your device or simulator.
+
+    ```bash
+    flutter run
+    ```
+
+    Expect a counter app demo. Modify `lib/main.dart` and hot reload with `r` in the terminal.
+  </Step>
+</Steps>
+
+```dart
+// Example from lib/main.dart - Your first Flutter app
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+```
+
+## Next Steps
+
+Dive deeper with these resources.
+
+<Columns cols={2}>
+  <Card title="Quickstart Guide" icon="book-open" href="/quickstart">
+    Detailed setup and your first full app.
+  </Card>
+  <Card title="Widget Catalog" icon="package" href="https://docs.flutter.dev/development/ui/widgets" target="_blank">
+    Explore 100+ widgets with live examples.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Authentication patterns and secure app building.
+  </Card>
+  <Card title="Community" icon="users" href="https://discord.gg/flutter" target="_blank">
+    Join discussions and get help.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+Ready to build? Head to the [Quickstart](/quickstart) for hands-on examples. Experiment with hot reload to see the magic firsthand.
+</Callout>
